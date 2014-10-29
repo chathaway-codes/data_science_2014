@@ -1,4 +1,4 @@
-total_students,number_overweight,%overweight,number_obese,$obese,number_overweight_or_obese,%overweight_or_obese,number_of_retail_food_stores,number_of_farmers_markets
+zip_code,total_students,number_overweight,%overweight,number_obese,$obese,number_overweight_or_obese,%overweight_or_obese,number_of_retail_food_stores,number_of_farmers_markets
 10509,3852.0,618.0,0.160436137072,714.0,0.185358255452,1332.0,0.345794392523,83,1
 10514,2379.0,330.0,0.138713745271,182.0,0.0765027322404,512.0,0.215216477512,28,1
 10516,966.0,138.0,0.142857142857,116.0,0.120082815735,254.0,0.262939958592,33,2
