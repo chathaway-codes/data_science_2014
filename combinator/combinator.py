@@ -40,6 +40,30 @@ def main(argv):
       if key not in updated_zip_codes:
         value += [""]*added_headers
 
+  # Make rows for x vs y
+  vs_rows = []
+  sys.stderr.write("headers: %s\n" % str(headers[1:]))
+  sys.stderr.flush()
+  for i, header in enumerate(headers[1:]):
+    for j, header2 in enumerate(headers[i+2:]):
+      t_i = i + 1
+      t_j = j + i + 2
+      vs_rows += ["%s_vs_%s" % (headers[t_i], headers[t_j])]
+      for key, value in combined_data.iteritems():
+        try:
+          d1 = float(value[t_i-1])
+          d2 = float(value[t_j-1])
+          #print "Combaring %s (%s) to %s (%s)" % (headers[t_i], value[t_i-1],headers[t_j], value[t_j-1])
+          value += [d1/d2]
+        except ValueError:
+          sys.stderr.write("Couldn't parse [%s, %s] %s or [%s, %s] %s\n"% (t_i, headers[t_i], value[t_i-1], t_j, headers[t_j], value[t_j-1]))
+          sys.stderr.flush()
+          value += ['']
+
+  #print str(vs_rows)
+  headers += vs_rows
+
+
   # Spit back out the data
   csvwriter = csv.writer(sys.stdout, delimiter=',',quotechar='|', quoting=csv.QUOTE_MINIMAL)
   # Write header
